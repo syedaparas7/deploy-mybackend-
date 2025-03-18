@@ -12,7 +12,12 @@ connectToDatabase()
 
 
 const app = express() 
-app.use(cors()) 
+  const corsOptions = {
+  origin: 'https://deply-project-hzdttathg-deployement.vercel.app/',
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true, 
+};
+app.use(cors(corsOptions));
 app.use(express.json()) 
 app.use('/api/auth', authRouter)
 app.use('/api/projects', projectRouter)
